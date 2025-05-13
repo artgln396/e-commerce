@@ -139,6 +139,21 @@ function hideCart() {
 cartIcon.addEventListener('click', showCart);
 closeCartBtn.addEventListener('click', hideCart);
 
+// Checkout functionality
+document.querySelector('.checkout-btn').addEventListener('click', () => {
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+  
+  alert('Thank you for your purchase! Total: ₱' + cartTotal.toLocaleString());
+  cart = [];
+  updateCartDisplay();
+  updateCounter();
+  cartTab.classList.remove('active');
+  overlay.classList.remove('active');
+});
+
 // Close cart when clicking outside
 document.addEventListener('click', (e) => {
     if (!cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) {
